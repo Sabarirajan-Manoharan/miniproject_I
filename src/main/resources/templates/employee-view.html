@@ -1,0 +1,65 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        table{
+            border: 1px solid;
+            padding: 5em;
+            background-color: aliceblue;
+        }
+        td{
+            padding: 1em;
+        }
+        .fcc-btn-home {
+          background-color: #5faa5f;
+          color: white;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<hr>
+<br>
+<h1>User List!!</h1>
+<br>
+<hr>
+
+<table>
+
+    <thead>
+    <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>email ID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each = "emp : ${employee}">
+        <td th:text = "${emp.id}"></td>
+        <td th:text = "${emp.firstName}"></td>
+        <td th:text = "${emp.lastName}"></td>
+        <td th:text = "${emp.emailId}"></td>
+    </tr>
+    <tr>
+        <td colspan="2"><span><a class="fcc-btn-home" th:href="@{/employees}">Home</a></span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+
+</html>

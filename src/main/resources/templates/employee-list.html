@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee List</title>
+    <style type="text/css">
+        html, body {
+            height: 100%;
+        }
+
+        html {
+            display: table;
+            margin: auto;
+        }
+
+        body {
+            display: table-cell;
+            vertical-align: middle;
+        }
+        form {
+            display: inline-block;
+        }
+        table{
+            border: 1px solid;
+            padding: 5em;
+            background-color: lightcyan;
+        }
+        td{
+            padding: 1em;
+        }
+        .fcc-btn-view {
+          background-color: #5faa5f;
+          color: white;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+        .fcc-btn-del {
+          background-color: #dc6969;
+          color: white;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+        .fcc-btn-update {
+          background-color: #6985a2;
+          color: white;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+        .fcc-btn-add {
+          background-color: #0c75e2;
+          color: white;
+          padding: 15px 25px;
+          text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<h1>Employee List</h1>
+<a class="fcc-btn-add" th:href="@{/employees/add}">Add Employee</a>
+<br>
+<br>
+<br>
+<table border="1">
+    <thead>
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email ID</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employeeDTOS}">
+        <td th:text="${employee.firstName}"></td>
+        <td th:text="${employee.lastName}"></td>
+        <td th:text="${employee.emailId}"></td>
+        <td>
+            <a class="fcc-btn-update" th:href="@{/employees/edit/{id}(id=${employee.id})}">Update</a>
+            <a class="fcc-btn-del" th:href="@{/employees/delete/{id}(id=${employee.id})}">Delete</a>
+            <a class="fcc-btn-view" th:href="@{/employees/view/{id}(id=${employee.id})}">View</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

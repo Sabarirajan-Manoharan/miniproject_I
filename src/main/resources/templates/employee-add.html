@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Add New Emp.</title>
+    <style type="text/css">
+        html, body {
+           height: 100%;
+       }
+
+       html {
+           display: table;
+           margin: auto;
+       }
+
+       body {
+           display: table-cell;
+           vertical-align: middle;
+       }
+       form {
+           display: inline-block;
+       }
+       table{
+           border: 1px solid;
+           padding: 5em;
+           background-color: lightcyan;
+       }
+       td{
+           padding: 1em;
+       }
+       .fcc-btn {
+         background-color: #199319;
+         color: white;
+         padding: 15px 25px;
+         text-decoration: none;
+       }
+    </style>
+</head>
+<body>
+
+
+<h1 th:text="${employee.id != null ? 'Edit Employee' : 'Add Employee'}"></h1>
+
+<form th:action="@{/employees}" th:object="${employee}" method="post">
+
+    <table>
+        <tr>
+            <td>FirstName: </td>
+            <td><input type="text" id="firstName" th:field="*{firstName}" required></td>
+        </tr>
+        <tr>
+            <td>LastName: </td>
+            <td><input type="text" id="lastName" th:field="*{lastName}" required></td>
+        </tr>
+        <tr>
+            <td>Email: </td>
+            <td><input type="email" id="emailId" th:field="*{emailId}" required></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit">Save</button></td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
